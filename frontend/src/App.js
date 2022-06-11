@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import LocationInput from './components/locationInput';
+import Map from './components/map';
 
 class App extends Component {
 
@@ -8,6 +9,7 @@ class App extends Component {
     return(
       <div className="App"> 
         <LocationInput />
+        <Map />
       </div> 
     )
   }
