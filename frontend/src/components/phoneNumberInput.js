@@ -9,26 +9,6 @@ class PhoneNumberInput extends Component {
         };
     }
 
-    configObj = {
-        method: "POST", 
-        headers: {
-            "Content-Type": 'application/json',
-            "Accept": "application/json",
-        },
-        body: JSON.stringify({
-            user: user 
-        })
-    }
-
-    fetchUser = () => {
-        fetch(`http://localhost:4000/users/`, configObj)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        
-        })
-    }
-
     handlePhoneChange = (event) => {
         this.setState({
           phoneNumber: event.target.value
@@ -37,7 +17,25 @@ class PhoneNumberInput extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.fetchUser
+
+        const configObj = {
+            method: "POST", 
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": "application/json",
+            },
+            body: JSON.stringify({
+                user:{phone_number: this.state.phoneNumber}
+            })
+        }
+
+        fetch(`http://localhost:4000/users/`, configObj)
+        .then(response => response.json())
+        .then(data => {
+            data.phone_number = this.state.phoneNumber
+            console.log(data)
+        
+        })
     }
 
   
@@ -46,7 +44,7 @@ class PhoneNumberInput extends Component {
         <div className="phone-input-form">
             <form onSubmit={this.handleSubmit}>
                 <input
-                    id = "start-location-input"
+                    id = "tel-input"
                     type="tel"
                     onChange={this.handlePhoneChange}
                     value = {this.state.phoneNumber}
