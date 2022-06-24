@@ -5,9 +5,9 @@ class Alert extends Component {
   render () {
     return (
       <div className="alert-detail">
-          <li>Brand: {this.props.origin}</li>
-          <li>Size: {this.props.destination}</li>
-          <li>Color: {this.props.time}</li>
+          <li>{this.props.origin}</li>
+          <li> {this.props.destination}</li>
+          <li> {this.props.time}</li>
       </div>
       );
     }

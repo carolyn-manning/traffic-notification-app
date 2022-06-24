@@ -1,8 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
-import LocationInput from './components/locationInput';
-import Map from './components/map';
 import PhoneNumberInput from './components/phoneNumberInput';
+import AlertContainer from './containers/alertContainer';
 
 class App extends Component {
 
@@ -10,8 +9,7 @@ class App extends Component {
     return(
       <div className="App"> 
         <PhoneNumberInput/>
-        <LocationInput />
-        <Map />
+        <AlertContainer/>
       </div> 
     )
   }
