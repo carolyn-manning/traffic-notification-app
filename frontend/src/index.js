@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import PhoneNumberInput from './components/phoneNumberInput';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Router>
+  <div>
+    <Route path="/help" component={App} />
+  </div>
+</Router>,
+   
 );
 
 // If you want to start measuring performance in your app, pass a function
