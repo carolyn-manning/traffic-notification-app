@@ -9,10 +9,16 @@ class App extends Component {
 
   render () {
     return(
-      <div className="App"> 
-        <PhoneNumberInput/>
-        <AlertContainer/>
-      </div> 
+
+      <Routes>
+        <Route exact path="/login" element={<PhoneNumberInput />} />
+        <Route exact path="/" element={<AlertContainer />} />
+      </Routes>
+      // <div> 
+      //   <PhoneNumberInput/>
+      //   <AlertContainer/>
+      // </div> 
+      // <Routes >
     )
   }
 }

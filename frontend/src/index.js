@@ -10,10 +10,10 @@ import PhoneNumberInput from './components/phoneNumberInput';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-  <div>
-    <Route path="/help" component={App} />
-  </div>
-</Router>,
+    <div>
+      <App />
+    </div>
+  </Router>,
    
 );
 
