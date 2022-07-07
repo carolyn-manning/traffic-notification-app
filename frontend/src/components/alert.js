@@ -8,6 +8,7 @@ class Alert extends Component {
           <li>{this.props.origin}</li>
           <li> {this.props.destination}</li>
           <li> {this.props.time}</li>
+          <li> {this.props.phoneNumber}</li>
       </div>
       );
     }
