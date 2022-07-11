@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
+import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
 
-class PhoneNumberInput extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            phoneNumber: '',
-        };
-    }
+export default function PhoneNumberInput() {
 
-    handlePhoneChange = (event) => {
-        this.setState({
-          phoneNumber: event.target.value
-        });
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const navigate = useNavigate()
+
+    const handlePhoneChange = (event) => {
+        setPhoneNumber(event.target.value)
     };
 
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
 
         const configObj = {
@@ -25,36 +21,36 @@ class PhoneNumberInput extends Component {
                 "Accept": "application/json",
             },
             body: JSON.stringify({
-                user:{phone_number: this.state.phoneNumber}
+                user:{phone_number: phoneNumber}
             })
         }
 
         fetch(`http://localhost:4000/login/`, configObj)
         .then(response => response.json())
         .then(data => {
-            data.phone_number = this.state.phoneNumber;
-            localStorage.setItem("jwt", data.jwt);
-            console.log(data)
+            if(data.jwt) {
+                localStorage.setItem("jwt", data.jwt);
+                console.log(data)
+                navigate('/') }
+            else {
+                console.log("Number not found")
+                }
         
         })
     }
 
-  
-    render () {
-      return (
+    return (
         <div className="phone-input-form">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={(event) => handleSubmit(event)}>
                 <input
                     id = "tel-input"
                     type="tel"
-                    onChange={this.handlePhoneChange}
-                    value = {this.state.phoneNumber}
+                    onChange={(event) => handlePhoneChange(event)}
+                    value = {phoneNumber}
                 />
                 <input type="submit" />
             </form>
         </div>
-        );
-      }
+    );
   }
   
-  export default PhoneNumberInput;
