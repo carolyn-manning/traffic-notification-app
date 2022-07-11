@@ -32,7 +32,8 @@ class PhoneNumberInput extends Component {
         fetch(`http://localhost:4000/login/`, configObj)
         .then(response => response.json())
         .then(data => {
-            data.phone_number = this.state.phoneNumber
+            data.phone_number = this.state.phoneNumber;
+            localStorage.setItem("jwt", data.jwt);
             console.log(data)
         
         })
