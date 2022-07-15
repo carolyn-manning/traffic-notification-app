@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
-    before_action :authorized
+    # before_action :authorized
+    # fix bug - not logging alert data with fetch request. possibly add async/thunk to login 
   
     def encode_token(payload)
       JWT.encode(payload, 'my_s3cr3t')

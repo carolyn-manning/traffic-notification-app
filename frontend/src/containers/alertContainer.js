@@ -19,9 +19,6 @@ class AlertContainer extends Component {
                 "Content-Type": 'application/json',
                 "Accept": "application/json",
             },
-            body: JSON.stringify({
-                alerts: this.state.alerts
-                })
         }
 
         fetch(`http://localhost:4000/alerts/`, configObj)
