@@ -25,7 +25,7 @@ class AlertContainer extends Component {
         fetch(`http://localhost:4000/alerts/`, configObj)
         .then(response => response.json())
         .then(data => {
-           console.log(data)
+           this.setState({alerts: data})
         })   
     }
 
@@ -34,14 +34,11 @@ class AlertContainer extends Component {
     }
 
     render() {
-
-
-        const test_alerts = [{origin: "1", destination: "1", time: "1"}, {origin: "2", destination: "2", time: "2"}]
         return (
             <div>
                 <LocationInput />
                 <Alerts 
-                    alerts={test_alerts}
+                    alerts={this.state.alerts}
                 />
             </div>
         );

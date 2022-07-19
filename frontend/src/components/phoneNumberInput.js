@@ -30,7 +30,6 @@ export default function PhoneNumberInput() {
         .then(data => {
             if(data.jwt) {
                 localStorage.setItem("jwt", data.jwt);
-                console.log(data)
                 navigate('/') }
             else {
                 console.log("Number not found")
