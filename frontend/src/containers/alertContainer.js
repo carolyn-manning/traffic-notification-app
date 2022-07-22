@@ -25,7 +25,8 @@ class AlertContainer extends Component {
         fetch(`http://localhost:4000/alerts/`, configObj)
         .then(response => response.json())
         .then(data => {
-           this.setState({alerts: data})
+            console.log(data)
+            this.setState({alerts: data})
         })   
     }
 

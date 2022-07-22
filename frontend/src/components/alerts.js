@@ -7,12 +7,12 @@ class Alerts extends Component {
 
         const alerts  = this.props.alerts.map((alert) => {
             return (
-                <Alert origin={alert.origin} destination={alert.destination} time={alert.time}/>
+                <Alert key={alert.id} origin={alert.origin} destination={alert.destination} time={alert.time} id={alert.id}/>
             )
         })
 
         return (
-            <div className="alert list">
+            <div className="alert-list">
                 {alerts}
             </div>
         );

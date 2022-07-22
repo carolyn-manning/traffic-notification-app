@@ -1,3 +1,3 @@
 class AlertSerializer < ActiveModel::Serializer
-    attributes :origin, :destination, :time
+    attributes :origin, :destination, :time, :id
 end
