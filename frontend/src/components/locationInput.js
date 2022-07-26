@@ -6,7 +6,8 @@ class LocationInput extends Component {
         super(props);
         this.state = {
             startLocation: '',
-            destinationLocation: ''
+            destinationLocation: '',
+            time: ''
         };
     }
 
@@ -22,14 +23,23 @@ class LocationInput extends Component {
         });
     };
 
+    handleTimeChange = (event) => {
+        this.setState({
+          time: event.target.value
+        });
+    };
+
+
     handleSubmit = event => {
         event.preventDefault();
         console.log("Submitted")
+        console.log(this.state)
         // create redux strore - input locations
-        this.setState({
-            startLocation: '',
-            destinationLocation: ''
-        });
+        // this.setState({
+        //     startLocation: '',
+        //     destinationLocation: '',
+        //     time: ''
+        // });
 
     }
 
@@ -49,6 +59,13 @@ class LocationInput extends Component {
                     type="text"
                     onChange={this.handleDestinationChange}
                     value = {this.state.destinationLocation}
+    
+                />
+                <input
+                    id = "time-input"
+                    type="text"
+                    onChange={this.handleTimeChange}
+                    value = {this.state.time}
     
                 />
                 <input type="submit" />
