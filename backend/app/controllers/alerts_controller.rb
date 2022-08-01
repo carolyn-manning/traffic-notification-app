@@ -6,7 +6,7 @@ class AlertsController < ApplicationController
     end 
 
     def create
-        alert = current_user.alert.create(alert_params)
+        alert = current_user.alerts.create(alert_params)
         render json: alert
     end
 
@@ -17,6 +17,6 @@ class AlertsController < ApplicationController
 
     private 
     def alert_params
-        params.require(:alert).permit(:origin, :destination, :time)
+        params.permit(:origin, :destination, :time)
     end 
 end

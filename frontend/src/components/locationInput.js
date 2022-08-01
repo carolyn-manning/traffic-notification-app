@@ -29,11 +29,37 @@ class LocationInput extends Component {
         });
     };
 
+    createNewAlert = () => {
+        const formData = new FormData()
+        formData.append('origin', this.state.startLocation)
+        formData.append('destination', this.state.destinationLocation)
+        formData.append('time', this.state.time)
+
+        const configObj = {
+            method: "POST", 
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            },
+            body: formData
+           
+        }
+
+        fetch(`http://localhost:4000/alerts/`, configObj)
+        .then(response => response.json())
+        .then(data => { console.log(data)
+            alert.origin = data.startLocation
+            alert.destination = data.destinationLocation
+            alert.time = data.time
+        })
+    }
+
 
     handleSubmit = event => {
         event.preventDefault();
         console.log("Submitted")
-        console.log(this.state)
+        this.createNewAlert()
+       
+       
         // create redux strore - input locations
         // this.setState({
         //     startLocation: '',
