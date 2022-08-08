@@ -15,6 +15,11 @@ class AlertsController < ApplicationController
         render json: alert.destroy
     end 
 
+    def update
+        alert  = Alert.find_by(id: params[:id])
+        render json: alert 
+    end 
+
     private 
     def alert_params
         params.permit(:origin, :destination, :time)
