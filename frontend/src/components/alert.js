@@ -6,9 +6,9 @@ class Alert extends Component {
     super(props);
     this.state = {
         clicked: false, 
-        origin: "", 
-        destination: "",
-        time: 0
+        origin: this.props.origin, 
+        destination: this.props.destination,
+        time: this.props.time
     };
 }
 
@@ -52,6 +52,24 @@ class Alert extends Component {
       clicked: !this.state.clicked
     });
   }
+
+  handleOriginChange = (event) => {
+    this.setState({
+      origin: event.target.value
+    });
+};
+
+handleDestinationChange = (event) => {
+    this.setState({
+      destination: event.target.value
+    });
+};
+
+handleTimeChange = (event) => {
+    this.setState({
+      time: event.target.value
+    });
+};
     
   
 
@@ -62,14 +80,14 @@ class Alert extends Component {
             <input
                 id = "start-location-input"
                 type="text"
-                onChange={this.handleStartChange}
-                value = {this.state.startLocation}
+                onChange={this.handleOriginChange}
+                value = {this.state.origin}
             />
              <input
                 id = "destination-location-input"
                 type="text"
                 onChange={this.handleDestinationChange}
-                value = {this.state.destinationLocation}
+                value = {this.state.destination}
             />
             <input
                 id = "time-input"
