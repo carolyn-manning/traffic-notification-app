@@ -27,13 +27,19 @@ class Alert extends Component {
   }
 
   handleOnSaveClick = event => {
+    event.preventDefault()
     const configObj = {
       method: "PATCH", 
       headers: {
         "Content-Type": 'application/json',
         "Accept": "application/json",
         "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-      }
+      },
+      body: JSON.stringify({ 
+        "origin": this.state.origin, 
+        "destination": this.state.destination, 
+        "time": this.state.time
+      })
     }
   
     fetch(`http://localhost:4000/alerts/${this.props.id}`, configObj) 
@@ -45,6 +51,7 @@ class Alert extends Component {
     this.setState({
       clicked: !this.state.clicked
     });
+   
   }
 
   handleOnEditClick = event => {

@@ -18,7 +18,6 @@ class AlertsController < ApplicationController
     def update
         alert  = Alert.find_by(id: params[:id])
         alert.update(alert_params)
-        binding.pry
         render json: alert 
     end 
 
