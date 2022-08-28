@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Alerts from '../components/alerts';
 import LocationInput from '../components/locationInput';
+import { SignOut } from '../components/signout';
 
 class AlertContainer extends Component {
 
@@ -40,6 +41,7 @@ class AlertContainer extends Component {
                 <Alerts 
                     alerts={this.state.alerts}
                 />
+                 <SignOut />
             </div>
         );
     }
