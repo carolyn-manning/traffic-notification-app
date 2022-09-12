@@ -1,10 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 
 
-
-export default function PhoneNumberInput() {
+export default function CreateUser() {
 
     const [phoneNumber, setPhoneNumber] = useState('');
     const navigate = useNavigate()
@@ -27,14 +25,14 @@ export default function PhoneNumberInput() {
             })
         }
 
-        fetch(`http://localhost:4000/login/`, configObj)
+        fetch(`http://localhost:4000/users/`, configObj)
         .then(response => response.json())
         .then(data => {
             if(data.jwt) {
                 localStorage.setItem("jwt", data.jwt);
                 navigate('/') }
             else {
-                console.log("Number not found")
+                console.log("Error")
                 }
         
         })
@@ -51,8 +49,6 @@ export default function PhoneNumberInput() {
                 />
                 <input type="submit" />
             </form>
-            <Link to="/sign_up">New to the App? Sign Up </Link>
         </div>
     );
   }
-  
