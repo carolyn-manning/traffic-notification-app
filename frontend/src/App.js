@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import CreateUser from './components/newUser';
 import PrivateAccountRoute from './routes/accountRoute';
 import LogInRoute from './routes/loginRoute';
+import CreateUserRoute from './routes/createUserRoute';
 
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
     return(
       <Routes>
         <Route exact path="/login" element={<LogInRoute />} />
-        <Route exact path="/sign_up" element={<CreateUser />} />
+        <Route exact path="/sign_up" element={<CreateUserRoute />} />
         <Route exact path="/" element={<PrivateAccountRoute />} />
       </Routes>
     )
