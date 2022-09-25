@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_15_031219) do
+ActiveRecord::Schema.define(version: 2022_09_25_021329) do
 
   create_table "alerts", force: :cascade do |t|
     t.string "origin"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_06_15_031219) do
     t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
 end
