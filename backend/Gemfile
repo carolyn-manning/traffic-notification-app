@@ -41,3 +41,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry'
 gem "jwt", "~> 2.3"
 gem 'active_model_serializers'
+gem 'bcrypt', '~> 3.1.7'

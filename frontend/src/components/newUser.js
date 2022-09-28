@@ -5,12 +5,17 @@ import React, { useState } from 'react';
 export default function CreateUser() {
 
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+
     const navigate = useNavigate()
 
     const handlePhoneChange = (event) => {
         setPhoneNumber(event.target.value)
     };
 
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
+    };
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -21,13 +26,17 @@ export default function CreateUser() {
                 "Accept": "application/json",
             },
             body: JSON.stringify({
-                user:{phone_number: phoneNumber}
+                user:{
+                    phone_number: phoneNumber,
+                    password: password 
+                }
             })
         }
 
         fetch(`http://localhost:4000/users/`, configObj)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if(data.jwt) {
                 localStorage.setItem("jwt", data.jwt);
                 navigate('/') }
@@ -47,6 +56,14 @@ export default function CreateUser() {
                     onChange={(event) => handlePhoneChange(event)}
                     value = {phoneNumber}
                 />
+                <br></br>
+                <input
+                    id = "password-input"
+                    type= "password"
+                    onChange={(event) => handlePasswordChange(event)}
+                    value = {password}
+                />
+                <br></br>
                 <input type="submit" />
             </form>
         </div>

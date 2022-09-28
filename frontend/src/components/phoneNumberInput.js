@@ -7,10 +7,16 @@ import { Link } from "react-router-dom";
 export default function PhoneNumberInput() {
 
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+
     const navigate = useNavigate()
 
     const handlePhoneChange = (event) => {
         setPhoneNumber(event.target.value)
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
     };
 
     const handleSubmit = event => {
@@ -23,7 +29,10 @@ export default function PhoneNumberInput() {
                 "Accept": "application/json",
             },
             body: JSON.stringify({
-                user:{phone_number: phoneNumber}
+                user:{
+                    phone_number: phoneNumber,
+                    password: password
+                }
             })
         }
 
@@ -48,7 +57,15 @@ export default function PhoneNumberInput() {
                     type="tel"
                     onChange={(event) => handlePhoneChange(event)}
                     value = {phoneNumber}
+                /> 
+                <br></br>
+                <input
+                    id = "password-input"
+                    type="password"
+                    onChange={(event) => handlePasswordChange(event)}
+                    value = {password}
                 />
+                <br></br>
                 <input type="submit" />
             </form>
             <Link to="/sign_up">New to the App? Sign Up </Link>
