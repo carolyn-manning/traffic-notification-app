@@ -1,4 +1,4 @@
-User.create(phone_number: 5555555555)
+User.create(phone_number: 5555555555, password: "password")
 
 Alert.create(user_id: 1, origin: "test origin 1", destination: "test destination 1", time: 1)
 Alert.create(user_id: 1, origin: "test origin 2", destination: "test destination 2", time: 2)

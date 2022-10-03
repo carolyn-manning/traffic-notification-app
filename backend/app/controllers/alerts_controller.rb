@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
 
     def index 
-        alerts =  current_user.alerts
+        alerts =  current_user.alerts 
         render json: alerts
     end 
 

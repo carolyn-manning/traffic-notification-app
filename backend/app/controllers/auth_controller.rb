@@ -3,7 +3,7 @@ class AuthController < ApplicationController
   
     def create
       user = User.find_by(phone_number: user_login_params[:phone_number])
-      if user
+      if user && user.authenticate(user_login_params[:password])
         token = encode_token({ user_id: user.id })
     
         render json: {
@@ -22,6 +22,6 @@ class AuthController < ApplicationController
     private
   
     def user_login_params
-      params.require(:user).permit(:phone_number)
+      params.require(:user).permit(:phone_number, :password)
     end
   end
