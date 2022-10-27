@@ -4,16 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import PhoneNumberInput from './components/phoneNumberInput';
+import {combineReducers} from 'redux'
+import { createStore, applyMiddleware, compose } from "redux"; 
+import { Provider } from "react-redux";
+import manageAlerts from './reducers/manageAlerts';
+import thunk from "redux-thunk";
+// import manageLogIn from './reducers/manageLogIn';
+
+const store = createStore(
+  combineReducers({manageAlerts}),
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  ),
+);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-    <div>
-      <App />
-    </div>
-  </Router>,
+  //<Provider store={store}>
+    <Router>
+      <div>
+        <App />
+      </div>
+    </Router>
+ // </Provider>
    
 );
 
